@@ -6,7 +6,7 @@ import 'data/datasource/coffee_remote_data_source_impl.dart';
 import 'data/repository/coffee_repository_impl.dart';
 import 'domain/usecase/get_coffees.dart';
 import 'theme.dart';
-import 'ui/screen/coffee/coffee_list.dart';
+import 'ui/screen/coffee/coffee_list_screen.dart';
 import 'ui/screen/user/change_password_screen.dart';
 import 'ui/screen/user/forgot_password_screen.dart';
 import 'ui/screen/user/login_screen.dart';

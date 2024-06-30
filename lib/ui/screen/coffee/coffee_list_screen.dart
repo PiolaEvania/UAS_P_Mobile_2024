@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../state/coffee_state.dart';
-import 'coffee_detail.dart';
+import 'coffee_detail_screen.dart';
 
 class CoffeeListScreen extends StatefulWidget {
   @override
@@ -49,6 +49,8 @@ class _CoffeeListScreenState extends State<CoffeeListScreen> {
   @override
   Widget build(BuildContext context) {
     final coffeeState = Provider.of<CoffeeState>(context);
+    final isLightTheme = Theme.of(context).brightness == Brightness.light;
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Coffee List'),
@@ -58,7 +60,7 @@ class _CoffeeListScreenState extends State<CoffeeListScreen> {
             onPressed: _toggleSortOrder,
           ),
           IconButton(
-            icon: Icon(Icons.color_lens),
+            icon: Icon(isLightTheme ? Icons.dark_mode : Icons.light_mode),
             onPressed: () => _toggleTheme(context),
           ),
         ],

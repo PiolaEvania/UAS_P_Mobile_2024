@@ -14,6 +14,9 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   final TextEditingController _confirmPasswordController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
+  bool _isNewPasswordVisible = false;
+  bool _isConfirmPasswordVisible = false;
+
   bool _isInputValid() {
     return _formKey.currentState?.validate() ?? false;
   }
@@ -72,9 +75,19 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     controller: _newPasswordController,
                     decoration: InputDecoration(
                       labelText: 'New Password',
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          _isNewPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _isNewPasswordVisible = !_isNewPasswordVisible;
+                          });
+                        },
+                      ),
                     ),
                     style: TextStyle(fontWeight: FontWeight.normal),
-                    obscureText: true,
+                    obscureText: !_isNewPasswordVisible,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'New password is required';
@@ -87,9 +100,19 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     controller: _confirmPasswordController,
                     decoration: InputDecoration(
                       labelText: 'Confirm New Password',
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          _isConfirmPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _isConfirmPasswordVisible = !_isConfirmPasswordVisible;
+                          });
+                        },
+                      ),
                     ),
                     style: TextStyle(fontWeight: FontWeight.normal),
-                    obscureText: true,
+                    obscureText: !_isConfirmPasswordVisible,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Confirm new password is required';

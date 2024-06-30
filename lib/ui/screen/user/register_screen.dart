@@ -18,6 +18,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController _confirmPasswordController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
+  bool _isPasswordVisible = false;
+  bool _isConfirmPasswordVisible = false;
+
   @override
   void initState() {
     super.initState();
@@ -63,14 +66,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       style: Theme.of(context).textTheme.headlineMedium
                   ),
                   Text(
-                    'Create an Account',
+                      'Create an Account',
                       style: Theme.of(context).textTheme.headlineLarge
                   ),
                   SizedBox(height: 16.0),
                   TextFormField(
                     controller: _usernameController,
                     decoration: InputDecoration(
-                      labelText: 'Username'
+                        labelText: 'Username'
                     ),
                     style: TextStyle(fontWeight: FontWeight.normal),
                     cursorColor: Color(0xFF4E342E),
@@ -85,7 +88,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   TextFormField(
                     controller: _emailController,
                     decoration: InputDecoration(
-                      labelText: 'Email'
+                        labelText: 'Email'
                     ),
                     style: TextStyle(fontWeight: FontWeight.normal),
                     cursorColor: Color(0xFF4E342E),
@@ -102,11 +105,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   TextFormField(
                     controller: _passwordController,
                     decoration: InputDecoration(
-                      labelText: 'Password'
+                      labelText: 'Password',
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          _isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _isPasswordVisible = !_isPasswordVisible;
+                          });
+                        },
+                      ),
                     ),
                     style: TextStyle(fontWeight: FontWeight.normal),
                     cursorColor: Color(0xFF4E342E),
-                    obscureText: true,
+                    obscureText: !_isPasswordVisible,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Password is required';
@@ -118,11 +131,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   TextFormField(
                     controller: _confirmPasswordController,
                     decoration: InputDecoration(
-                      labelText: 'Confirm Password'
+                      labelText: 'Confirm Password',
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          _isConfirmPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _isConfirmPasswordVisible = !_isConfirmPasswordVisible;
+                          });
+                        },
+                      ),
                     ),
                     style: TextStyle(fontWeight: FontWeight.normal),
                     cursorColor: Color(0xFF4E342E),
-                    obscureText: true,
+                    obscureText: !_isConfirmPasswordVisible,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Confirm Password is required';
@@ -134,8 +157,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   ),
                   SizedBox(height: 16.0),
                   ElevatedButton(
-                    onPressed: () => _register(context),
-                    child: Text('Register')
+                      onPressed: () => _register(context),
+                      child: Text('Register')
                   ),
                   SizedBox(height: 10),
                   GestureDetector(

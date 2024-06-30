@@ -13,6 +13,8 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _passwordController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
+  bool _isPasswordVisible = false;
+
   bool _isInputValid() {
     return _formKey.currentState?.validate() ?? false;
   }
@@ -76,10 +78,20 @@ class _LoginScreenState extends State<LoginScreen> {
                     controller: _passwordController,
                     decoration: InputDecoration(
                       labelText: 'Password',
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          _isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _isPasswordVisible = !_isPasswordVisible;
+                          });
+                        },
+                      ),
                     ),
                     style: TextStyle(fontWeight: FontWeight.normal),
                     cursorColor: Color(0xFF4E342E),
-                    obscureText: true,
+                    obscureText: !_isPasswordVisible,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Password is required';

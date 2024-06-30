@@ -11,11 +11,14 @@ class CoffeeState with ChangeNotifier {
   bool _isAscending = true;
   ThemeData _currentTheme = lightCoffeeTheme;
 
-  CoffeeState({required this.getCoffees});
+  CoffeeState({required this.getCoffees}) {
+    _initializeTheme();
+  }
 
   List<Coffee> get coffees => _coffees;
   List<Coffee> get filteredCoffees => _filteredCoffees;
   ThemeData get currentTheme => _currentTheme;
+  bool get isAscending => _isAscending;
 
   Future<void> fetchCoffees() async {
     _coffees = await getCoffees();
@@ -48,12 +51,10 @@ class CoffeeState with ChangeNotifier {
     notifyListeners();
   }
 
-  void fetchTheme() async {
+  void _initializeTheme() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool isDarkMode = prefs.getBool('isDarkMode') ?? false;
     _currentTheme = isDarkMode ? darkCoffeeTheme : lightCoffeeTheme;
     notifyListeners();
   }
-
-  bool get isAscending => _isAscending;
 }

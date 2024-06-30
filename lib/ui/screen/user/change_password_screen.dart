@@ -13,6 +13,10 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
   final TextEditingController _confirmPasswordController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
+  bool _isCurrentPasswordVisible = false;
+  bool _isNewPasswordVisible = false;
+  bool _isConfirmPasswordVisible = false;
+
   bool _isInputValid() {
     return _formKey.currentState?.validate() ?? false;
   }
@@ -57,9 +61,19 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                     controller: _currentPasswordController,
                     decoration: InputDecoration(
                       labelText: 'Current Password',
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          _isCurrentPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _isCurrentPasswordVisible = !_isCurrentPasswordVisible;
+                          });
+                        },
+                      ),
                     ),
                     style: TextStyle(fontWeight: FontWeight.normal),
-                    obscureText: true,
+                    obscureText: !_isCurrentPasswordVisible,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Current password is required';
@@ -72,9 +86,19 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                     controller: _newPasswordController,
                     decoration: InputDecoration(
                       labelText: 'New Password',
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          _isNewPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _isNewPasswordVisible = !_isNewPasswordVisible;
+                          });
+                        },
+                      ),
                     ),
                     style: TextStyle(fontWeight: FontWeight.normal),
-                    obscureText: true,
+                    obscureText: !_isNewPasswordVisible,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'New password is required';
@@ -87,9 +111,19 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                     controller: _confirmPasswordController,
                     decoration: InputDecoration(
                       labelText: 'Confirm New Password',
+                      suffixIcon: IconButton(
+                        icon: Icon(
+                          _isConfirmPasswordVisible ? Icons.visibility : Icons.visibility_off,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            _isConfirmPasswordVisible = !_isConfirmPasswordVisible;
+                          });
+                        },
+                      ),
                     ),
                     style: TextStyle(fontWeight: FontWeight.normal),
-                    obscureText: true,
+                    obscureText: !_isConfirmPasswordVisible,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Confirm new password is required';
