@@ -21,6 +21,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
     return _formKey.currentState?.validate() ?? false;
   }
 
+  //Handle lupa password
   void _resetPassword(BuildContext context) async {
     if (!_isInputValid()) {
       return;
@@ -40,6 +41,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
     }
   }
 
+  //Tampilan halaman lupa password
   @override
   Widget build(BuildContext context) {
     return Scaffold(

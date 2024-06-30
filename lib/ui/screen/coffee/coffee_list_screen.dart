@@ -20,11 +20,13 @@ class _CoffeeListScreenState extends State<CoffeeListScreen> {
     });
   }
 
+  //Handle pengurutan list A-Z/Z-A
   void _toggleSortOrder() {
     _isAscending = !_isAscending;
     Provider.of<CoffeeState>(context, listen: false).sortCoffees(_isAscending);
   }
 
+  //Handle aksi bottom app bar
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
@@ -42,15 +44,16 @@ class _CoffeeListScreenState extends State<CoffeeListScreen> {
     }
   }
 
+  //Handle pergantian tema
   void _toggleTheme(BuildContext context) {
     Provider.of<CoffeeState>(context, listen: false).switchTheme(context);
   }
 
+  //Tampilan halaman list
   @override
   Widget build(BuildContext context) {
     final coffeeState = Provider.of<CoffeeState>(context);
     final isLightTheme = Theme.of(context).brightness == Brightness.light;
-
     return Scaffold(
       appBar: AppBar(
         title: Text('Coffee List'),

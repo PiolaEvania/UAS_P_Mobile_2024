@@ -21,6 +21,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
     return _formKey.currentState?.validate() ?? false;
   }
 
+  //Handle ganti password
   void _changePassword(BuildContext context) async {
     if (!_isInputValid()) {
       return;
@@ -40,6 +41,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
     }
   }
 
+  //Tampilan halaman ganti password
   @override
   Widget build(BuildContext context) {
     return Scaffold(

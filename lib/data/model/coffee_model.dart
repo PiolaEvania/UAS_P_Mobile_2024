@@ -1,5 +1,6 @@
 import '../../domain/entity/coffee.dart';
 
+//Memperluas kelas CoffeeModel sehingga mewarisi semua properti dan metode dari Coffee.
 class CoffeeModel extends Coffee {
   CoffeeModel({
     required String title,
@@ -15,6 +16,7 @@ class CoffeeModel extends Coffee {
     id: id,
   );
 
+  //Deserialisasi object JSON agar bisa digunakan
   factory CoffeeModel.fromJson(Map<String, dynamic> json) {
     return CoffeeModel(
       title: json['title'],
@@ -25,6 +27,7 @@ class CoffeeModel extends Coffee {
     );
   }
 
+  //Serialisasi object JSON
   Map<String, dynamic> toJson() {
     return {
       'title': title,

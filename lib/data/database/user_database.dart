@@ -1,7 +1,9 @@
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
 
+//Menyimpan dan mengelola data pengguna dengan SharedPreferences
 class UserDatabase {
+  //Method addUser untuk menambahkan data user saat register dengan mengubah data menjadi object JSON
   static Future<void> addUser(String username, String email, String password) async {
     final prefs = await SharedPreferences.getInstance();
     final usersJson = prefs.getString('users');
@@ -16,6 +18,7 @@ class UserDatabase {
     await prefs.setString('users', jsonEncode(users));
   }
 
+  //Method userExist untuk mengecek data user sudah terdaftar (dipakai di register)
   static Future<bool> userExists(String username, String email) async {
     final prefs = await SharedPreferences.getInstance();
     final usersJson = prefs.getString('users');
@@ -34,6 +37,7 @@ class UserDatabase {
     }
   }
 
+  //Method getUser untuk mendapatkan data user (dipakai untuk mengecek keberadaan data user)
   static Future<Map<String, dynamic>?> getUser(String username) async {
     final prefs = await SharedPreferences.getInstance();
     final usersJson = prefs.getString('users');
@@ -45,6 +49,7 @@ class UserDatabase {
     }
   }
 
+  //Method resetPassword untuk mengecek data user untuk keperluan lupa/ganti password
   static Future<void> resetPassword(String username, String newPassword) async {
     final prefs = await SharedPreferences.getInstance();
     final usersJson = prefs.getString('users');

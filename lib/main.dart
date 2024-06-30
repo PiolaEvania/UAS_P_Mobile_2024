@@ -22,6 +22,7 @@ void main() async {
   final getCoffees = GetCoffees(coffeeRepository);
   final prefs = await SharedPreferences.getInstance();
 
+  //Mengelola state menggunakan Provider, Coffee dari CoffeeState dan User dari AuthService
   runApp(
     MultiProvider(
       providers: [
@@ -33,6 +34,7 @@ void main() async {
   );
 }
 
+//Menghandle theme dan route
 class CoffeeApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

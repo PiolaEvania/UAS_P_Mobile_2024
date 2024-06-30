@@ -1,3 +1,4 @@
+//Blueprint untuk object/entity coffee
 class Coffee {
   final String title;
   final String description;

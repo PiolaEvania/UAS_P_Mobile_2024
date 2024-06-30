@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../data/auth/auth_service.dart';
 
+//Tampilan halaman profile
 class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

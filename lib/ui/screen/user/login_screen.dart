@@ -19,6 +19,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return _formKey.currentState?.validate() ?? false;
   }
 
+  //Handle proses login
   void _login(BuildContext context) async {
     if (!_isInputValid()) {
       return;
@@ -34,10 +35,13 @@ class _LoginScreenState extends State<LoginScreen> {
     }
   }
 
+  //Mengalihkan ke halaman forgot_password
   void _forgotPassword(BuildContext context) {
     Navigator.pushNamed(context, '/forgot_password');
   }
 
+
+  //Tampilan halaman login
   @override
   Widget build(BuildContext context) {
     return Scaffold(

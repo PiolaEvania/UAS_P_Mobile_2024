@@ -4,8 +4,10 @@ import '../../../domain/entity/coffee.dart';
 class CoffeeDetailScreen extends StatelessWidget {
   final Coffee coffee;
 
+  //Handle data kopi yang dipilih
   CoffeeDetailScreen({required this.coffee});
 
+  //Tampilan halaman detail
   @override
   Widget build(BuildContext context) {
     return Scaffold(

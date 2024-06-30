@@ -4,6 +4,8 @@ import '../../domain/entity/coffee.dart';
 import '../../domain/usecase/get_coffees.dart';
 import '../../theme.dart';
 
+
+//Mengelola state
 class CoffeeState with ChangeNotifier {
   final GetCoffees getCoffees;
   List<Coffee> _coffees = [];
@@ -20,12 +22,14 @@ class CoffeeState with ChangeNotifier {
   ThemeData get currentTheme => _currentTheme;
   bool get isAscending => _isAscending;
 
+  //Mengambil data kopi
   Future<void> fetchCoffees() async {
     _coffees = await getCoffees();
     _filteredCoffees = _coffees;
     notifyListeners();
   }
 
+  //Mencari data kopi
   void filterCoffees(String query) {
     if (query.isEmpty) {
       _filteredCoffees = _coffees;
@@ -37,12 +41,14 @@ class CoffeeState with ChangeNotifier {
     notifyListeners();
   }
 
+  //Mengurutkan list A-Z/Z-A
   void sortCoffees(bool ascending) {
     _isAscending = ascending;
     _filteredCoffees.sort((a, b) => _isAscending ? a.title.compareTo(b.title) : b.title.compareTo(a.title));
     notifyListeners();
   }
 
+  //Mengganti tema light/dark
   void switchTheme(BuildContext context) {
     _currentTheme = _currentTheme == lightCoffeeTheme ? darkCoffeeTheme : lightCoffeeTheme;
     SharedPreferences.getInstance().then((prefs) {

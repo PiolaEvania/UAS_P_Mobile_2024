@@ -33,6 +33,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return _formKey.currentState?.validate() ?? false;
   }
 
+  //Handle proses register
   void _register(BuildContext context) async {
     if (!_isInputValid()) {
       return;
@@ -50,6 +51,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
     }
   }
 
+
+  //Tampilan halaman register
   @override
   Widget build(BuildContext context) {
     return Scaffold(

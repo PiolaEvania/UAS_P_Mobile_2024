@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+//Theme untuk lightmode
 final lightCoffeeTheme = ThemeData(
   scaffoldBackgroundColor: Colors.white,
   appBarTheme: AppBarTheme(
@@ -77,6 +78,7 @@ final lightCoffeeTheme = ThemeData(
   ),
 );
 
+//Theme untuk darkmode
 final darkCoffeeTheme = ThemeData.dark().copyWith(
   scaffoldBackgroundColor: Color(0xFF242124),
   appBarTheme: AppBarTheme(
