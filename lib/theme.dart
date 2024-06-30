@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-//Theme untuk lightmode
+// Theme for light mode
 final lightCoffeeTheme = ThemeData(
   scaffoldBackgroundColor: Colors.white,
   appBarTheme: AppBarTheme(
@@ -69,16 +69,31 @@ final lightCoffeeTheme = ThemeData(
     ),
   ),
   snackBarTheme: SnackBarThemeData(
-    backgroundColor: Color(0xFF4E342E),
+    backgroundColor: Color(0xFFD7CCC8),
     contentTextStyle: TextStyle(
-      color: Color(0xFFD7CCC8),
+      color: Color(0xFF4E342E),
       fontWeight: FontWeight.normal,
       fontSize: 16.0,
     ),
   ),
+  dialogTheme: DialogTheme(
+    backgroundColor: Color(0xFFD7CCC8),
+    titleTextStyle: TextStyle(
+      color: Color(0xFF4E342E),
+      fontWeight: FontWeight.bold,
+      fontSize: 20.0,
+    ),
+    contentTextStyle: TextStyle(
+      color: Color(0xFF4E342E),
+      fontSize: 18.0,
+    ),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(10.0),
+    ),
+  ),
 );
 
-//Theme untuk darkmode
+// Theme for dark mode
 final darkCoffeeTheme = ThemeData.dark().copyWith(
   scaffoldBackgroundColor: Color(0xFF242124),
   appBarTheme: AppBarTheme(
@@ -152,6 +167,21 @@ final darkCoffeeTheme = ThemeData.dark().copyWith(
       color: Color(0xFFEFEBE9),
       fontWeight: FontWeight.normal,
       fontSize: 16.0,
+    ),
+  ),
+  dialogTheme: DialogTheme(
+    backgroundColor: Color(0xFF3E2723),
+    titleTextStyle: TextStyle(
+      color: Color(0xFFEFEBE9),
+      fontWeight: FontWeight.bold,
+      fontSize: 20.0,
+    ),
+    contentTextStyle: TextStyle(
+      color: Color(0xFFEFEBE9),
+      fontSize: 18.0,
+    ),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(10.0),
     ),
   ),
 );

@@ -2,8 +2,41 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../../data/auth/auth_service.dart';
 
-//Tampilan halaman profile
+// Tampilan halaman profile
 class ProfileScreen extends StatelessWidget {
+
+  //Tampilan alert hapus akun
+  void _showDeleteAccountDialog(BuildContext context, AuthService authService) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Delete Account'),
+          content: Text('Are you sure you want to delete your account permanently?'),
+          actions: [
+            TextButton(
+              child: Text('Cancel',
+                  style: TextStyle(color: Theme.of(context).dialogTheme.titleTextStyle?.color)
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: Text('Delete',
+                  style: TextStyle(color: Theme.of(context).dialogTheme.titleTextStyle?.color)
+              ),
+              onPressed: () async {
+                await authService.deleteUser(authService.username!);
+                Navigator.of(context).pushNamedAndRemoveUntil('/', (route) => false);
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final authService = Provider.of<AuthService>(context, listen: false);
@@ -59,6 +92,13 @@ class ProfileScreen extends StatelessWidget {
                           Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
                         },
                         child: Text('Logout'),
+                      ),
+                      SizedBox(height: 16),
+                      ElevatedButton(
+                        onPressed: () {
+                          _showDeleteAccountDialog(context, authService);
+                        },
+                        child: Text('Delete Account'),
                       ),
                     ],
                   ),
