@@ -39,7 +39,7 @@ class CoffeeApp extends StatelessWidget {
     return Consumer<CoffeeState>(
       builder: (context, coffeeState, _) {
         return MaterialApp(
-          title: 'Coffee App',
+          title: 'Coffee',
           themeMode: ThemeMode.light,
           theme: coffeeState.currentTheme,
           darkTheme: darkCoffeeTheme,
