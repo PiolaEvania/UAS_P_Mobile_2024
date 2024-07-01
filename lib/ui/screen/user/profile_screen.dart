@@ -4,6 +4,7 @@ import '../../../data/auth/auth_service.dart';
 
 class ProfileScreen extends StatelessWidget {
 
+  //Handle alert hapus akun
   void _showDeleteAccountDialog(BuildContext context, AuthService authService) {
     showDialog(
       context: context,
@@ -35,6 +36,7 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
+  //Tampilan halaman profile
   @override
   Widget build(BuildContext context) {
     final authService = Provider.of<AuthService>(context, listen: false);
